@@ -1,2 +1,5 @@
 rootProject.name = 'java_course_kha_hw1'
+include 'controllers'
+include 'models'
+include 'serializers'
 
