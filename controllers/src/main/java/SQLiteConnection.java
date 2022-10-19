@@ -1,3 +1,4 @@
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -17,7 +18,9 @@ public final class SQLiteConnection {
             if (isConnected() && !conn.isClosed())
                 closeConnection();
             Class.forName("org.sqlite.JDBC");
-            String url = "jdbc:sqlite:D:\\vsu\\3\\_courses\\java\\java_course_kha_hw1\\controllers\\src\\main\\resources\\library.db";
+            URL tmp = SQLiteConnection.class.getResource("library.db");
+            assert tmp != null;
+            String url = "jdbc:sqlite:" + tmp.getPath();
             conn = DriverManager.getConnection(url);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
